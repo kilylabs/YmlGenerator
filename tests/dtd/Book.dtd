@@ -36,6 +36,7 @@
         buyurl?,
         price,
         oldprice?,
+        purchase_price?,
         wprice?,
         currencyId,
         xCategory?,
@@ -44,6 +45,7 @@
         delivery?,
         local_delivery_cost?,
         weight?,
+        dimensions?,
         name,
         enable_auto_discounts?,
         author?,
@@ -107,6 +109,7 @@
 <!ELEMENT deliveryTime EMPTY>
 <!ELEMENT price (#PCDATA)>
 <!ELEMENT oldprice (#PCDATA)>
+<!ELEMENT purchase_price (#PCDATA)>
 <!ELEMENT wprice (#PCDATA)>
 <!ELEMENT currencyId (#PCDATA)>
 <!ELEMENT categoryId (#PCDATA)>
@@ -168,6 +171,7 @@
 <!ELEMENT adult (#PCDATA)>
 <!ELEMENT age (#PCDATA)>
 <!ELEMENT weight (#PCDATA)>
+<!ELEMENT dimensions (#PCDATA)>
 <!ELEMENT barcode (#PCDATA)>
 <!ELEMENT param (#PCDATA)>
 <!ATTLIST param

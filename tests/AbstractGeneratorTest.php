@@ -115,7 +115,13 @@ abstract class AbstractGeneratorTest extends \PHPUnit_Framework_TestCase
                 ->setUrl($this->faker->url)
                 ->setPrice($this->faker->numberBetween(1, 9999))
                 ->setOldPrice($this->faker->numberBetween(1, 9999))
+                ->setPurchasePrice($this->faker->numberBetween(1, 9999))
                 ->setWeight($this->faker->numberBetween(1, 9999))
+                ->setDimensions(
+                    $this->faker->randomFloat(3, 0),
+                    $this->faker->randomFloat(3, 0),
+                    $this->faker->randomFloat(3, 0)
+                )
                 ->setCurrencyId('UAH')
                 ->setCategoryId($id)
                 ->setDelivery($this->faker->boolean)

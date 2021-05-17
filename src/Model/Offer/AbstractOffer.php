@@ -44,6 +44,11 @@ abstract class AbstractOffer implements OfferInterface
     private $oldPrice;
 
     /**
+     * @var float
+     */
+    private $purchasePrice;
+
+    /**
      * @var string
      */
     private $currencyId;
@@ -122,6 +127,11 @@ abstract class AbstractOffer implements OfferInterface
      * @var string
      */
     private $weight;
+
+    /**
+     * @var string
+     */
+    private $dimensions;
 
     /**
      * @var int
@@ -270,6 +280,26 @@ abstract class AbstractOffer implements OfferInterface
     public function setOldPrice($oldPrice)
     {
         $this->oldPrice = $oldPrice;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPurchasePrice()
+    {
+        return $this->purchasePrice;
+    }
+
+    /**
+     * @param float $purchasePrice
+     *
+     * @return $this
+     */
+    public function setPurchasePrice($purchasePrice)
+    {
+        $this->purchasePrice = $purchasePrice;
 
         return $this;
     }
@@ -615,6 +645,34 @@ abstract class AbstractOffer implements OfferInterface
     }
 
     /**
+     * @return string
+     */
+    public function getDimensions()
+    {
+        return $this->dimensions;
+    }
+
+    /**
+     * @param float $length
+     * @param float $width
+     * @param float $height
+     *
+     * @return $this
+     */
+    public function setDimensions($length, $width, $height)
+    {
+        $dimensions = [
+            \round((float) $length, 3),
+            \round((float) $width, 3),
+            \round((float) $height, 3),
+        ];
+
+        $this->dimensions = \implode('/', $dimensions);
+
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getCpa()
@@ -848,6 +906,7 @@ abstract class AbstractOffer implements OfferInterface
                 'url' => $this->getUrl(),
                 'price' => $this->getPrice(),
                 'oldprice' => $this->getOldPrice(),
+                'purchase_price' => $this->getPurchasePrice(),
                 'currencyId' => $this->getCurrencyId(),
                 'categoryId' => \array_merge(
                     [$this->getCategoryId()],
@@ -860,6 +919,7 @@ abstract class AbstractOffer implements OfferInterface
                 'delivery' => $this->isDelivery(),
                 'local_delivery_cost' => $this->getLocalDeliveryCost(),
                 'weight' => $this->getWeight(),
+                'dimensions' => $this->getDimensions(),
                 'name' => $this->getName(),
                 'enable_auto_discounts' => $this->getAutoDiscount(),
             ] + $this->getCustomElements();
